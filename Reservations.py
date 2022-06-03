@@ -17,7 +17,10 @@ class CReservation:
         self._data = data
         self._bezet = ((data._assignreservering_tabel[:,1] != 0) + self.overlappende_reservaties() == 2)
         self._beschikbaar = (data._randvoorwaarden * np.invert(self._bezet.transpose()))[:,self._id-1]
-        self._huis = None
+        if self._data._df_reservations['Cottage (Fixed)'][self._id - 1] != 0:
+            self._huis = self._data._df_reservations['Cottage (Fixed)'][self._id - 1]
+        else:
+            self._huis = None
     def beschikbare_huizenids(self):
         '''
         return: list met huizen waar reservering kan (ingeplande huizen kunnen niet)
