@@ -24,7 +24,6 @@ class CMain:
         else:
             print(f"Kan niet voor {reservering_id}\n--------------------\n--------------------")
             return None
-            
         
 if __name__ == "__main__":
     start = time.localtime()
@@ -33,7 +32,10 @@ if __name__ == "__main__":
     data.reset_reserveringen()
     
     for i in range(1, len(data.reservations)+1):
-        cottage_id = main.plan_reservering(i)
+        if CReservation(data, i)._huis != 0:
+            continue
+        else:
+            cottage_id = main.plan_reservering(i)
     reserveringen = data._assignreservering_tabel
-    duur = time.localtime() - start
+    duur = time.localtime()
     missers = sum(data._assignreservering_tabel[:,1] == 0)
