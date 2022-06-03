@@ -23,7 +23,7 @@ class CMain:
             print(f"Reservering {i} is ingedeelt op huis {cottage_id}")
         else:
             print(f"Kan niet voor {reservering_id}\n--------------------\n--------------------")
-            return None
+            return 9999999999999
         
 if __name__ == "__main__":
     start = time.localtime()
@@ -32,9 +32,9 @@ if __name__ == "__main__":
     data.reset_reserveringen()
     
     for i in range(1, len(data.reservations)+1):
-        if CReservation(data, i)._huis != 0:
-            continue
-        else:
+        # if CReservation(data, i)._huis:
+        #     print(i)
+        if not CReservation(data, i)._huis:
             cottage_id = main.plan_reservering(i)
     reserveringen = data._assignreservering_tabel
     duur = time.localtime()
