@@ -112,11 +112,3 @@ class CData:
             Maak een nieuwe init aan. Hierdoor worden alle geregistreerde reserveringen verwijdert
             '''
             self.__init__(self._path)
-# def opzetten(excelfile_path):
-#     df_cottages = pd.read_excel(io = excelfile_path, sheet_name = 0)
-#     df_reservations = pd.read_excel(io=excelfile_path, sheet_name = 1)
-#     df_reservations['Max Leave Date'] = df_reservations['Arrival Date'] + df_reservations['Length of Stay'].apply(datetime.timedelta)
-#     assignreservering_tabel = df_reservations.reset_index()[['ID', 'Cottage (Fixed)']]data.to_numpy()
-#     assignhuis_tabel = [[] for x in range(len(df_cottages))]
-#     huisbezetting_tijd = np.array([[None]*(df_reservations['Max Leave Date'].max() - df_reservations['Arrival Date'].min()).days]*len(df_cottages))
-#     data_dict
